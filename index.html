@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню Клуба</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #111;
+            color: #eee;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        .menu-section {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .menu-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu-section li {
+            background: #222;
+            margin: 5px 0;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-section button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .menu-section button:hover {
+            background-color: #555;
+        }
+        #orders {
+            margin-top: 40px;
+            text-align: left;
+        }
+        #orderList li {
+            background: #333;
+            margin: 5px 0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .remove-btn {
+            margin-left: 10px;
+            background-color: #aa3333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Меню Клуба</h1>
+
+    <div id="menu">
+        <!-- Оставь здесь все разделы меню как раньше — они не изменились -->
+        <!-- Пример одного блюда: -->
+        <div class="menu-section">
+            <h2>Салаты</h2>
+            <ul>
+                <li>Цезарь с курицей <button onclick="addOrder('Цезарь с курицей')">Заказать</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="orders">
+        <h2>Текущие заказы:</h2>
+        <ul id="orderList"></ul>
+    </div>
+
+    <script>
+        const orderList = document.getElementById('orderList');
+
+        function addOrder(item) {
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+            span.textContent = item + ' — ' + new Date().toLocaleTimeString();
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Удалить';
+            removeBtn.className = 'remove-btn';
+            removeBtn.onclick = () => {
+                orderList.removeChild(li);
+            };
+
+            li.appendChild(span);
+            li.appendChild(removeBtn);
+            orderList.appendChild(li);
+        }
+    </script>
+</body>
+</html>
